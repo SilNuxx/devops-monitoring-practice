@@ -1,14 +1,16 @@
 terraform {
   required_providers {
     proxmox = {
-      source  = "telmate/proxmox"
+      source  = "Telmate/proxmox"
+      version = "3.0.2-rc03"
     }
   }
 }
 
 provider "proxmox" {
-  endpoint = var.ENDPOINT    // HTTP/HTTPS URL to the server 
-  insecure = false            // Access HTTP request
-  username = var.USERNAME    // Username on the server format: user@pam or user@pve
-  password = var.PASSWORD    // Password for user on the PVE-server
+  pm_api_url = var.ENDPOINT 
+  pm_api_token_id = var.TOKEN_ID
+  pm_api_token_secret = var.TOKEN_SECRET
+  pm_tls_insecure = false
+  pm_minimum_permission_check = false
 }
